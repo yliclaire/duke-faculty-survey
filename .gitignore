@@ -1,0 +1,17 @@
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# Collected data may contain manually coded attributes. Keep it local by default.
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Cached web pages and generated output
+cache/*
+!cache/.gitkeep
+output/*
+!output/.gitkeep
+
