@@ -1,0 +1,63 @@
+---
+title: "Written Report"
+format: pdf
+editor: visual
+---
+
+## Duke Faculty Survey
+
+### Introduction
+
+The goal of this project was to use a probability sample to learn about characteristics of faculty in Duke University's Trinity College of Arts & Sciences. We were primarily interested in estimating the proportion of faculty who are women, the proportion who have at least one ongoing grant in 2026, and the average number of years since receiving a Ph.D. among faculty with Ph.D. degrees. For our fourth question, we examined the proportion of faculty with Ph.D. degrees who received their Ph.D. from Duke University.
+
+We constructed a sampling frame using faculty listings on Duke Scholars and selected a probability sample of faculty. Information for the sampled faculty was then collected from their Duke Scholars profiles.
+
+### Sampling Design
+
+Our sampling frame consisted of 1,152 unique faculty members across 17 Trinity College departments. Because some faculty were affiliated with multiple departments, each faculty member was included only once in the sampling frame. For faculty associated with multiple included departments, we assigned the alphabetically first department as their sampling department. This rule was determined before collecting the outcome variables.
+
+We used **proportionate stratified simple random sampling without replacement**, with department serving as the stratification variable. Within each department, we sampled approximately 20% of the faculty. The final sample contained 230 faculty members.
+
+We chose stratified sampling because faculty characteristics may differ across academic departments. Sampling separately within each department ensured that faculty from all 17 departments were represented in our sample rather than allowing the composition of the sample to depend entirely on a single simple random draw. We used proportionate allocation so that larger departments contributed more sampled faculty than smaller departments, approximately in proportion to their sizes.
+
+We designed the sample with Question 1 as the main goal. We expected the proportion of women to vary across academic departments, so stratifying by department could improve the precision of our estimate while ensuring that every department was represented in the sample. We considered cluster sampling, which would involve sampling departments and then faculty within them, but it would not have substantially reduced the data collection effort because the main time cost was reviewing each sampled faculty profile. We also did not use probability proportional to size sampling because we did not have an auxiliary size variable that was clearly related to our variables of interest. We chose a sample of 230 faculty to balance the time required for data collection with the goal of obtaining reasonably precise estimates.
+
+Within department $h$, a faculty member's selection probability was $\pi_{hi} = \frac{n_h}{N_h}$ where $N_h$ is the number of faculty in the department's sampling frame and $n_h$ is the number sampled from that department. The corresponding survey weight was $w_{hi} = \frac{1}{\pi_{hi}} = \frac{N_h}{n_h}$.
+
+Because approximately 20% of each department was sampled, the survey weights were close to 5 across departments. The sample was drawn using a fixed random seed so that the selection was reproducible.
+
+### Data Collection
+
+For each of the 230 sampled faculty members, we collected information from Duke Scholars. We recorded information on sex, grants, Ph.D. education, and Ph.D. institution.
+
+For the grant variable, a faculty member was classified as having an ongoing grant if at least one grant listed on their Duke Scholars research page had dates that included 2026. Faculty with no listed grants were classified as not having an ongoing grant in 2026.
+
+For faculty education, we identified whether the faculty member held a Ph.D. or D.Phil. degree and, when available, recorded the year and institution of the degree. Years since receiving the Ph.D. was calculated as $2026 - \text{Ph.D. year}$.
+
+To determine whether a faculty member was a woman, we used information from their Duke Scholars profile, as the assignment directs. Profile pronouns were used when available. Profiles with no pronouns or with conflicting information were flagged, and our team reviewed each of these profiles by hand and assigned a code. Every sampled faculty member received a final classification, so no one was dropped from the Question 1 estimate.
+
+Our fourth variable indicated whether a faculty member with a Ph.D. received that degree from Duke University.
+
+### Analysis
+
+All estimates accounted for the stratified sampling design. We specified department as the stratum, used each faculty member's inverse selection probability as the survey weight, and incorporated the finite population size of each department. This allowed the estimates and standard errors to reflect the probability sampling design rather than treating the observations as an unweighted simple random sample.
+
+We performed all analyses with the survey package in R. For Questions 1 and 2, we estimated population proportions using survey-weighted means of binary indicator variables. For Questions 3 and 4, we treated Ph.D. holders as a domain and subset the survey design object rather than the data, so the standard errors account for the fact that the number of Ph.D. holders in each department was not fixed in advance. For Question 4, we used a logit-based confidence interval because the estimated proportion is small.
+
+### Results
+
+1.  **Fraction of faculty who are women**
+
+After accounting for the stratified sampling design and survey weights, we estimate that 40.6% of Trinity College faculty are women. The 95% confidence interval ranges from 35.4% to 45.8%. Therefore, our results suggest that women make up somewhat less than half of the Trinity faculty population represented by our sampling frame.
+
+2.  **Fraction of faculty with at least one ongoing grant in 2026**
+
+We estimate that 31.9% of Trinity College faculty have at least one grant ongoing in 2026. The 95% confidence interval ranges from 27.2% to 36.7%. Based on our sample, this suggests that approximately one-third of Trinity faculty have at least one ongoing grant in 2026.
+
+3.  **Average number of years since receiving a Ph.D.**
+
+Among faculty with a Ph.D., we estimate that the average time since receiving the degree is 27.8 years. The 95% confidence interval ranges from 25.8 to 29.8 years. Therefore, we estimate that Trinity faculty with Ph.D. degrees received their degrees approximately 28 years ago on average.
+
+4.  **Fraction of Ph.D. holders who received their Ph.D. from Duke**
+
+For our additional research question, we examined the proportion of Ph.D.-holding faculty who received their Ph.D. from Duke University. We estimate that 10.7% of Trinity faculty with Ph.D. degrees received their Ph.D. from Duke. The 95% confidence interval ranges from 7.4% to 15.2%. Because this proportion is relatively small, we used a logit-based confidence interval, which ensures that the confidence interval remains within the possible range for a proportion, from 0 to 1.
