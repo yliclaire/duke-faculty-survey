@@ -1,6 +1,7 @@
 library(dplyr)
 library(readr)
 library(tibble)
+library(tidyverse)
 
 faculty <- read_csv(
   "data/processed/faculty_profiles.csv",
@@ -59,3 +60,4 @@ write_csv(
   faculty_final,
   "data/processed/faculty_final.csv"
 )
+
