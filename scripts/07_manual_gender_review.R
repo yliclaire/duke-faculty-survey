@@ -45,8 +45,15 @@ faculty_final <- faculty |>
   ) |>
   mutate(
     woman_final = case_when(
+      faculty_id %in% c("wah", "jenny.tung") ~ 1L,
       !is.na(manual_woman) ~ manual_woman,
       TRUE ~ woman
+    ),
+    gender_method = case_when(
+      faculty_id %in% c("wah", "jenny.tung") ~ "manual_review",
+      !is.na(manual_woman) ~ "manual_review",
+      she_pronoun_count > 0 | he_pronoun_count > 0 ~ "profile_pronouns",
+      TRUE ~ "first_name_ssa_95pct"
     )
   )
 

@@ -1,16 +1,17 @@
 ---
-title: "Written Report"
+title: "Duke Faculty Survey: Written Report"
+author:
+  - "Sophie Schwartz"
+  - "Claire Li"
 format: pdf
 editor: visual
 ---
-
-## Duke Faculty Survey
 
 ### Introduction
 
 The goal of this project was to use a probability sample to learn about characteristics of faculty in Duke University's Trinity College of Arts & Sciences. We were primarily interested in estimating the proportion of faculty who are women, the proportion who have at least one ongoing grant in 2026, and the average number of years since receiving a Ph.D. among faculty with Ph.D. degrees. For our fourth question, we examined the proportion of faculty with Ph.D. degrees who received their Ph.D. from Duke University.
 
-We constructed a sampling frame using faculty listings on Duke Scholars and selected a probability sample of faculty. Information for the sampled faculty was then collected from their Duke Scholars profiles.
+We constructed a sampling frame using faculty listings on Duke Scholars and selected a probability sample of faculty. We used Duke Scholars’ department-specific Faculty search results to construct the frame, and our conclusions apply to faculty in the 17 included departments rather than all Trinity College departments. Information for the sampled faculty was then collected from their Duke Scholars profiles.
 
 ### Sampling Design
 
@@ -30,11 +31,11 @@ Because approximately 20% of each department was sampled, the survey weights wer
 
 For each of the 230 sampled faculty members, we collected information from Duke Scholars. We recorded information on sex, grants, Ph.D. education, and Ph.D. institution.
 
-For the grant variable, a faculty member was classified as having an ongoing grant if at least one grant listed on their Duke Scholars research page had dates that included 2026. Faculty with no listed grants were classified as not having an ongoing grant in 2026.
+For the grant variable, a faculty member was classified as having an ongoing grant if at least one grant listed on their Duke Scholars research page had dates that included 2026. Faculty with no listed grants were classified as not having an ongoing grant in 2026. Any listed grant role counted, and a grant was classified as ongoing when its listed dates included 2026.
 
-For faculty education, we identified whether the faculty member held a Ph.D. or D.Phil. degree and, when available, recorded the year and institution of the degree. Years since receiving the Ph.D. was calculated as $2026 - \text{Ph.D. year}$.
+For faculty education, we identified whether the faculty member held a Ph.D. or D.Phil. degree and, when available, recorded the year and institution of the degree. Years since receiving the Ph.D. was calculated as $2026 - \text{Ph.D. year}$. We classified a faculty member as a Ph.D. holder only when the Scholars education information explicitly listed a Ph.D. or D.Phil. degree. Because some profiles did not contain complete education information, some degrees may not have been identified.
 
-To determine whether a faculty member was a woman, we used information from their Duke Scholars profile, as the assignment directs. Profile pronouns were used when available. Profiles with no pronouns or with conflicting information were flagged, and our team reviewed each of these profiles by hand and assigned a code. Every sampled faculty member received a final classification, so no one was dropped from the Question 1 estimate.
+To determine whether a faculty member was a woman, we first searched the text of each Duke Scholars profile for gendered pronouns. This classified 95 faculty members. For the 107 profiles without a she/he pronoun match, we used the first name shown on the profile and classified it only when U.S. Social Security records for births from 1930 to 2005 indicated that the name was at least 95% associated with one sex. We manually reviewed the remaining 28 profiles, including profiles with conflicting or unresolved information and one profile whose automatic pronoun match referred to someone other than the faculty member. Every sampled faculty member received a final classification. First names and profile text are imperfect indicators, so some misclassification is possible.
 
 Our fourth variable indicated whether a faculty member with a Ph.D. received that degree from Duke University.
 
@@ -48,7 +49,7 @@ We performed all analyses with the survey package in R. For Questions 1 and 2, w
 
 1.  **Fraction of faculty who are women**
 
-After accounting for the stratified sampling design and survey weights, we estimate that 40.6% of Trinity College faculty are women. The 95% confidence interval ranges from 35.4% to 45.8%. Therefore, our results suggest that women make up somewhat less than half of the Trinity faculty population represented by our sampling frame.
+After accounting for the stratified sampling design and survey weights, we estimate that 41.5% of Trinity College faculty are women. The 95% confidence interval ranges from 36.3% to 46.6%. Therefore, our results suggest that women make up somewhat less than half of the faculty population represented by our 17-department sampling frame.
 
 2.  **Fraction of faculty with at least one ongoing grant in 2026**
 
