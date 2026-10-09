@@ -5,7 +5,7 @@ library(stringr)
 
 faculty_path <- "data/processed/faculty_profiles.csv"
 if (!file.exists(faculty_path)) {
-  stop("Run scripts/05_code_gender_from_pronouns.R first.")
+  stop("Run scripts/04_code_gender_from_pronouns.R first.")
 }
 
 faculty <- read_csv(faculty_path, show_col_types = FALSE)

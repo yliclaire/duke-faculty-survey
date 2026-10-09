@@ -2,6 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
+.DS_Store
+**/.DS_Store
 
 # Collected data may contain manually coded attributes. Keep it local by default.
 data/raw/*
@@ -14,4 +16,3 @@ cache/*
 !cache/.gitkeep
 output/*
 !output/.gitkeep
-
