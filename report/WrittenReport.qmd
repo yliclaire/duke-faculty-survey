@@ -14,11 +14,9 @@ editor: visual
 
 This project uses a probability sample to study faculty represented in 17 departments in Duke University's Trinity College of Arts & Sciences. The first three questions concern the proportion who are women, the proportion with at least one grant ongoing in 2026, and the average number of years since receiving a Ph.D. among those who hold one. The fourth asks what proportion of Ph.D. holders received their degree from Duke University.
 
-Project code is available at <https://github.com/yliclaire/duke-faculty-survey>.
-
 ### Sampling design
 
-The sampling frame came from department-filtered Faculty results on Duke Scholars and contained 1,152 unique faculty across 17 departments. Faculty with multiple affiliations appeared once and were assigned to the alphabetically first included department before outcomes were collected. The target population is the faculty represented in this frame. Because Scholars only approximates departmental rosters, incomplete or incorrect affiliations could cause coverage error.
+The sampling frame came from department-filtered Faculty results on Duke Scholars and contained 1,152 unique faculty across 17 departments. Faculty with multiple affiliations appeared once and were assigned to the alphabetically first included department before outcomes were collected. The frame excluded cross-departmental institutes, the Sanford School of Public Policy, and Electrical and Computer Engineering, so the target population is the faculty represented in the 17 selected departments. Because Scholars only approximates departmental rosters, incomplete or incorrect affiliations could cause coverage error.
 
 We used proportionate stratified simple random sampling without replacement, with department as the stratum. The total sample was fixed at 230, about 20% of the frame. We allocated selections by department size using the largest-remainder method, then sampled independently within each department with a fixed random seed.
 
@@ -28,26 +26,26 @@ In department $h$, a faculty member's inclusion probability was $\pi_{hi}=n_h/N_
 
 ### Data collection
 
-For each sampled faculty member, we collected information from Duke Scholars about whether the person was a woman, grants, and Ph.D. education. A faculty member was classified as having an ongoing grant when at least one listed grant, in any role, had dates that included 2026. No listed grant was coded as no ongoing grant.
+We accessed all 230 sampled Duke Scholars profiles on September 28, 2026, and collected information about whether the person was a woman, grants, and Ph.D. education. A faculty member was classified as having an ongoing grant when at least one listed grant, in any role, had dates that included 2026. No listed grant was coded as no ongoing grant.
 
 A person counted as a Ph.D. holder only when the education section explicitly listed a Ph.D. or D.Phil. When available, we recorded the degree year and institution and calculated years since the degree as $2026-\text{Ph.D. year}$. The fourth outcome indicated whether a Ph.D. holder received that degree from Duke.
 
-We first reviewed gendered pronouns on each profile to determine whether a faculty member was a woman; this classified 95 faculty. When a profile offered no usable pronoun evidence, we used the first name as an initial aid if U.S. Social Security records for 1930--2005 associated it with one sex at least 95% of the time. We manually reviewed the remaining 28 cases, including uncertain or conflicting evidence and one pronoun match that referred to someone else. Each sampled faculty member received a final classification from the profile information, although names, pronouns, and profile text can all lead to error.
+We first reviewed gendered pronouns on each profile to determine whether a faculty member was a woman; this classified 95 faculty. When a profile offered no usable pronoun evidence, we used the first name as a preliminary aid if U.S. Social Security records for 1930--2005 associated it with one sex at least 95% of the time. We manually reviewed the remaining 28 cases when the evidence was uncertain or conflicting, including one pronoun match that referred to someone else. Each sampled faculty member received a final classification from the profile information, although names, pronouns, and profile text can all lead to error.
 
 ### Analysis
 
-We used the `survey` package in R, specifying department as the stratum, inverse inclusion probabilities as weights, and department frame sizes as finite population corrections. Questions 1 and 2 used survey-weighted means of binary indicators. For Questions 3 and 4, we treated Ph.D. holders as a domain by subsetting the survey design. Question 4 used a logit confidence interval to keep its bounds between zero and one. All intervals have 95% confidence. Code is also available at [github.com/yliclaire/duke-faculty-survey](https://github.com/yliclaire/duke-faculty-survey).
+We used the `survey` package in R, specifying department as the stratum, inverse inclusion probabilities as weights, and department frame sizes as finite population corrections. Questions 1 and 2 used survey-weighted means of binary indicators. For Questions 3 and 4, we treated Ph.D. holders as a domain by subsetting the survey design. Question 4 used a logit confidence interval to keep its bounds between zero and one. We report 95% confidence intervals for all estimates. Code is also available at [github.com/yliclaire/duke-faculty-survey](https://github.com/yliclaire/duke-faculty-survey).
 
 ### Results
 
-1.  **Faculty who are women.** The estimated proportion is 41.5% (95% CI: 36.3% to 46.6%).
+1.  **Faculty who are women.** Of the 230 sampled faculty, 95 were classified as women. The survey-weighted estimate is 41.5% (95% CI: 36.3% to 46.6%).
 
-2.  **Faculty with an ongoing grant in 2026.** An estimated 31.9% have at least one ongoing grant in 2026 (95% CI: 27.2% to 36.7%).
+2.  **Faculty with an ongoing grant in 2026.** Seventy-three sampled faculty had at least one ongoing grant. The survey-weighted estimate is 31.9% (95% CI: 27.2% to 36.7%).
 
-3.  **Years since receiving a Ph.D.** Among the 186 faculty identified as Ph.D. holders, the estimated mean is 27.8 years (95% CI: 25.8 to 29.8 years).
+3.  **Years since receiving a Ph.D.** All 186 identified Ph.D. holders had a recorded degree year. The survey-weighted mean is 27.8 years (95% CI: 25.8 to 29.8 years).
 
-4.  **Ph.D. holders who received the degree from Duke.** Among the 186 identified Ph.D. holders, the estimated proportion is 10.7% (95% logit CI: 7.4% to 15.2%).
+4.  **Ph.D. holders who received the degree from Duke.** Twenty of the 186 identified Ph.D. holders received the degree from Duke. The survey-weighted estimate is 10.7% (95% logit CI: 7.4% to 15.2%).
 
 ### Limitations
 
-The estimates describe the 17-department frame and may not generalize to excluded or unlisted Trinity faculty. Scholars profiles may be incomplete or outdated, particularly for grants and education. Coding no listed grant as no ongoing grant may miss unlisted awards. Determining whether a faculty member was a woman required judgment, and missing Ph.D. years or institutions could affect Questions 3 and 4. The confidence intervals do not account for these sources of measurement and coverage error.
+The estimates describe the 17-department frame and may not generalize to excluded or unlisted Trinity faculty. Scholars profiles may be incomplete or outdated, particularly for grants and education. Coding no listed grant as no ongoing grant may miss unlisted awards. Determining whether a faculty member was a woman required judgment. Because we identified Ph.D. holders only when Scholars explicitly listed a Ph.D. or D.Phil., incomplete education sections may have caused some degree holders to be classified as non-Ph.D. faculty. The confidence intervals do not account for these sources of measurement and coverage error.
