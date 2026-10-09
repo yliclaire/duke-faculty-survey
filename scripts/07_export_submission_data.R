@@ -1,14 +1,20 @@
 library(dplyr)
 library(readr)
 
-source_path <- "faculty_final.csv"
 audit_path <- "data/processed/faculty_final_full.csv"
 submission_path <- "data/processed/faculty_final.csv"
 
-if (!file.exists(source_path)) {
+source_candidates <- c(
+  audit_path,
+  "faculty_final.csv",
+  submission_path
+)
+source_path <- source_candidates[file.exists(source_candidates)][1]
+
+if (is.na(source_path)) {
   stop(
-    "Could not find ", source_path, ". ",
-    "Place the complete faculty_final.csv in the project root first."
+    "Could not find a final faculty data file. Place the complete file at ",
+    audit_path, " or faculty_final.csv."
   )
 }
 
@@ -87,7 +93,8 @@ write_csv(faculty_full, audit_path)
 write_csv(faculty_submission, submission_path)
 
 message(
-  "Saved the full 39-column audit file to ", audit_path, 
-  " and the ", ncol(faculty_submission), "-column submission file to ",
+  "Read ", source_path, ". Saved the ", ncol(faculty_full),
+  "-column audit file to ", audit_path, " and the ",
+  ncol(faculty_submission), "-column submission file to ",
   submission_path, "."
 )

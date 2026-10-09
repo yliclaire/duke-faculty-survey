@@ -49,7 +49,7 @@ source("scripts/07_export_submission_data.R")
 source("scripts/08_analyze.R")
 ```
 
-The manual-review step records classifications for profiles that could not be resolved automatically. The export script validates the final 230-person dataset, preserves a full audit copy locally, and produces the 18-column analysis CSV used by `08_analyze.R`.
+The manual-review step records classifications for profiles that could not be resolved automatically. It requires the local 230-person profile file used for the final sample. The export script reads the completed local audit file, validates the final dataset, and produces the 18-column analysis CSV used by `08_analyze.R`.
 
 Render the report after verifying the analysis results:
 

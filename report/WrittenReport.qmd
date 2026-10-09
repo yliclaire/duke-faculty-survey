@@ -42,9 +42,9 @@ We used the `survey` package in R, specifying department as the stratum, inverse
 
 2.  **Faculty with an ongoing grant in 2026.** An estimated 31.9% have at least one ongoing grant in 2026 (95% CI: 27.2% to 36.7%).
 
-3.  **Years since receiving a Ph.D.** Among faculty identified as Ph.D. holders, the estimated mean is 27.8 years (95% CI: 25.8 to 29.8 years).
+3.  **Years since receiving a Ph.D.** Among the 186 faculty identified as Ph.D. holders, the estimated mean is 27.8 years (95% CI: 25.8 to 29.8 years).
 
-4.  **Ph.D. holders who received the degree from Duke.** The estimated proportion is 10.7% (95% logit CI: 7.4% to 15.2%).
+4.  **Ph.D. holders who received the degree from Duke.** Among the 186 identified Ph.D. holders, the estimated proportion is 10.7% (95% logit CI: 7.4% to 15.2%).
 
 ### Limitations
 
