@@ -40,13 +40,14 @@ We used the `survey` package in R, specifying department as the stratum, inverse
 
 ### Results
 
-1.  **Faculty who are women.** Of the 230 sampled faculty, 95 were classified as women. The survey-weighted estimate is 41.5% (95% CI: 36.3% to 46.6%).
+| Survey quantity | Sample | Estimate | 95% CI |
+|:--------------------------------------------|----------:|------------:|----------------:|
+| Proportion of faculty classified as women | 95 of 230 | 41.5% | 36.3% to 46.6% |
+| Proportion with an ongoing grant in 2026 | 73 of 230 | 31.9% | 27.2% to 36.7% |
+| Mean years since degree among Ph.D. holders | $n=186$ | 27.8 years | 25.8 to 29.8 years |
+| Proportion of Ph.D. holders with a Duke Ph.D. | 20 of 186 | 10.7% | 7.4% to 15.2% |
 
-2.  **Faculty with an ongoing grant in 2026.** Seventy-three sampled faculty had at least one ongoing grant. The survey-weighted estimate is 31.9% (95% CI: 27.2% to 36.7%).
-
-3.  **Years since receiving a Ph.D.** All 186 identified Ph.D. holders had a recorded degree year. The survey-weighted mean is 27.8 years (95% CI: 25.8 to 29.8 years).
-
-4.  **Ph.D. holders who received the degree from Duke.** Twenty of the 186 identified Ph.D. holders received the degree from Duke. The survey-weighted estimate is 10.7% (95% logit CI: 7.4% to 15.2%).
+Women comprise less than half of the faculty represented in the frame, while about one-third have at least one ongoing grant in 2026. Among the 186 identified Ph.D. holders, the average elapsed time since the degree is about 28 years, and roughly one in nine received the degree from Duke.
 
 ### Limitations
 
