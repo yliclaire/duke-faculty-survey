@@ -14,6 +14,8 @@ editor: visual
 
 This project uses a probability sample to study faculty represented in 17 departments in Duke University's Trinity College of Arts & Sciences. The first three questions concern the proportion who are women, the proportion with at least one grant ongoing in 2026, and the average number of years since receiving a Ph.D. among those who hold one. The fourth asks what proportion of Ph.D. holders received their degree from Duke University.
 
+Code is also available at <https://github.com/yliclaire/duke-faculty-survey>.
+
 ### Sampling design
 
 The sampling frame came from department-filtered Faculty results on Duke Scholars and contained 1,152 unique faculty across 17 departments. Faculty with multiple affiliations appeared once and were assigned to the alphabetically first included department before outcomes were collected. The frame excluded cross-departmental institutes, the Sanford School of Public Policy, and Electrical and Computer Engineering, so the target population is the faculty represented in the 17 selected departments. Because Scholars only approximates departmental rosters, incomplete or incorrect affiliations could cause coverage error.
@@ -34,7 +36,7 @@ We first reviewed gendered pronouns on each profile to determine whether a facul
 
 ### Analysis
 
-We used the `survey` package in R, specifying department as the stratum, inverse inclusion probabilities as weights, and department frame sizes as finite population corrections. Questions 1 and 2 used survey-weighted means of binary indicators. For Questions 3 and 4, we treated Ph.D. holders as a domain by subsetting the survey design. Question 4 used a logit confidence interval to keep its bounds between zero and one. We report 95% confidence intervals for all estimates. Code is also available at [github.com/yliclaire/duke-faculty-survey](https://github.com/yliclaire/duke-faculty-survey).
+We used the `survey` package in R, specifying department as the stratum, inverse inclusion probabilities as weights, and department frame sizes as finite population corrections. Questions 1 and 2 used survey-weighted means of binary indicators. For Questions 3 and 4, we treated Ph.D. holders as a domain by subsetting the survey design. Question 4 used a logit confidence interval to keep its bounds between zero and one. We report 95% confidence intervals for all estimates.
 
 ### Results
 
