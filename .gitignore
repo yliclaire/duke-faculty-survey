@@ -4,6 +4,7 @@
 .Ruserdata
 .DS_Store
 **/.DS_Store
+/faculty_final.csv
 
 # Collected data may contain manually coded attributes. Keep it local by default.
 data/raw/*
