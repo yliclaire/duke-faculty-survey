@@ -12,7 +12,7 @@ editor: visual
 
 ### Introduction
 
-This project uses a probability sample to study faculty represented in 17 departments in Duke University's Trinity College of Arts & Sciences. The first three questions concern the proportion who are women, the proportion with at least one grant ongoing in 2026, and the average number of years since receiving a Ph.D. among those who hold one. The fourth asks what proportion of Ph.D. holders received their degree from Duke University.
+This project uses a probability sample to study faculty represented in 17 departments in Duke University's Trinity College of Arts & Sciences. The first three questions concern the proportion who are women, the proportion with at least one grant ongoing in 2026, and the average number of years since receiving a Ph.D. among those who hold one. For the additional question, we chose to investigate what proportion of Ph.D. holders received their degree from Duke University.
 
 Code is also available at <https://github.com/yliclaire/duke-faculty-survey>.
 
